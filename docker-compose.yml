@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  dante:
+    build: 
+      context: .
+      args:
+        SOCKET_USER: "${SOCKET_USER}"
+        SOCKET_PASSWORD: "${SOCKET_PASSWORD}"
+    ports:
+    - "1080:${SOCKET_PORT:-1080}"
+    volumes:
+    - ./sockd.conf:/etc/sockd.conf
