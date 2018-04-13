@@ -5,7 +5,7 @@ ARG SOCKET_PASSWORD=sockd_passwd
 
 RUN set -x && apk add --no-cache linux-pam curl
 RUN adduser -s /bin/false -D -S -u 8062 -H $SOCKET_USER \
-    && adduser -s /bin/false -D -S -u 8065 -H sockd
+    && adduser -s /bin/false -D -S -u 8065 -H sockd -G wheel
 
 RUN set -x \
  && apk add --no-cache -t .build-deps \
