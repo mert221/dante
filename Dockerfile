@@ -1,10 +1,11 @@
 FROM alpine:3.7
 
-ARG SOCKET_USER=sockd
-ARG SOCKET_PASSWORD=sockdpasswd
+ARG SOCKET_USER=sockd_user
+ARG SOCKET_PASSWORD=sockd_passwd
 
 RUN set -x && apk add --no-cache linux-pam curl
-RUN adduser -s /bin/false -D -S -u 8062 -H $SOCKET_USER
+RUN adduser -s /bin/false -D -S -u 8062 -H $SOCKET_USER \
+    && adduser -s /bin/false -D -S -u 8062 -H sockd
 
 RUN set -x \
  && apk add --no-cache -t .build-deps \
