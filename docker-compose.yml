@@ -8,6 +8,7 @@ services:
         SOCKET_USER: "${SOCKET_USER}"
         SOCKET_PASSWORD: "${SOCKET_PASSWORD}"
     ports:
-    - "1080:${SOCKET_PORT}"
+    - "${SOCKET_PORT}:1080"
+    restart: always
     volumes:
     - ./sockd.conf:/etc/sockd.conf
